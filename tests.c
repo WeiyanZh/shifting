@@ -7,7 +7,7 @@ static uint32_t arith_shift(uint32_t num, uint32_t k) {
 
 static uint32_t arith_shift_fixed(uint32_t num, uint32_t k) {
     static const uint32_t n = 32;
-    uint32_t mask = ~((-((num >> (n-1)) & 0x1)) << (n - k)) | (-((k & 31) == 0));
+    uint32_t mask = ~((-((num >> (n-1)) & 0x1)) << (n - k)) | (-((k & (n-1)) == 0));
     return arith_shift(num, k) & mask;
 }
 
